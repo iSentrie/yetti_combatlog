@@ -25,7 +25,7 @@ function GetSkinData(identifier)
 end
 
 function GetAllPlayersData()
-    local xPlayers = ESX.ExtendedPlayers()
+    local xPlayers = ESX.GetExtendedPlayers()
 
     if xPlayers then
         local playerData = {}
@@ -35,7 +35,7 @@ function GetAllPlayersData()
             playerData[src] = {
                 name = GetCharName(src),
                 identifier = GetPlyIdentifier(src),
-                license = GetPlayerIdentifierByType(src, 'license')
+                license = GetConvar('esx:identifier', 'license') or GetPlayerIdentifierByType(src, 'license')
             }
         end
         return playerData
